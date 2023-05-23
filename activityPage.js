@@ -226,34 +226,6 @@ const allTransactionRowData = document.querySelectorAll(".transaction-history-ro
 const allTransactionDataArr = [...allTransactionRowData]
 
 
-//handle member click
-let membersSelectorsArr = document.querySelectorAll(".div-block-11")
-let userMembersArr = [...membersSelectorsArr]
-userMembersArr.map((ele) => {
-    ele.addEventListener("click", () => {
-        let clickedmember = ele.innerText
-        let trimedMember = clickedmember.replace(/\s{2,}/g, ' ').trim()
-
-        console.log("get call member")
-
-        allTransactionDataArr.map((ele, i) => {
-            if (i !== 0) {
-                let txMemberRowText = ele.querySelector(".transaction-member").innerText;
-                let trimedTxMemberRowText = txMemberRowText.replace(/\s{2,}/g, ' ').trim()
-
-                console.log("**" + trimedTxMemberRowText + "**")
-                console.log("**" + trimedMember + "**")
-
-                if (trimedTxMemberRowText == trimedMember) {
-                    ele.style.display = "flex"
-                } else {
-                    ele.style.display = "none"
-                }
-            }
-        })
-    })
-})
-
 //handle account click
 let accountsSelectorsArr = document.querySelectorAll(".div-block-14")
 let userAccountsArr = [...accountsSelectorsArr]
