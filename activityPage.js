@@ -364,6 +364,8 @@ const onClickMember = (btn) => {
                 let txMemberRowText = ele.querySelector(".transaction-member").innerText;
                 let trimedTxMemberRowText = txMemberRowText.replace(/\s+/g, '')
 
+                console.log(memberNameSP + " = " + trimedTxMemberRowText)
+
                 if (trimedTxMemberRowText == memberNameSP || trimedTxMemberRowText == memberNameP || trimedTxMemberRowText == trimedMember) {
                     ele.style.display = "flex"
                 } else {
