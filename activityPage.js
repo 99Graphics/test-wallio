@@ -234,13 +234,15 @@ userMembersArr.map((ele) => {
         let clickedmember = ele.innerText
         let trimedMember = clickedmember.replace(/\s{2,}/g, ' ').trim()
 
+        console.log("get call member")
+
+        console.log("**" + trimedTxMemberRowText + "**")
+        console.log("**" + trimedMember + "**")
+
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
                 let txMemberRowText = ele.querySelector(".transaction-member").innerText;
                 let trimedTxMemberRowText = txMemberRowText.replace(/\s{2,}/g, ' ').trim()
-
-                console.log("**" + trimedTxMemberRowText + "**")
-                console.log("**" + trimedMember + "**")
 
                 if (trimedTxMemberRowText == trimedMember) {
                     ele.style.display = "flex"
@@ -259,6 +261,8 @@ userAccountsArr.map((ele) => {
     ele.addEventListener("click", () => {
         let clickedAccount = ele.innerText
         let trimedAccountName = clickedAccount.replace(/\s{2,}/g, ' ').trim()
+
+        console.log("get call account")
 
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
@@ -282,6 +286,9 @@ categoriesArr.map((ele) => {
     ele.addEventListener("click", () => {
         let clickedCategory = ele.innerText
         let trimedClickedCategory = clickedCategory.replace(/\s{2,}/g, ' ').trim()
+
+        console.log("get call category")
+
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
                 let txCategoryRowText = ele.querySelector(".transaction-emoji-category").innerText;
@@ -305,6 +312,8 @@ txTypesArr.map((ele) => {
         let clickedTxType = ele.innerText
         let trimedClickedTxType = clickedTxType.replace(/\s{2,}/g, ' ').trim()
 
+        console.log("get call transaction types")
+
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
                 let txTransactionNameRowText = ele.querySelector(".transaction-tx-name").innerText;
@@ -327,6 +336,8 @@ statusArr.map((ele) => {
     ele.addEventListener("click", () => {
         let clickedStatus = ele.innerText
         let trimedClickedStatus = clickedStatus.replace(/\s{2,}/g, ' ').trim()
+
+        console.log("get call status")
 
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
