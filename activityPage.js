@@ -309,7 +309,7 @@ statusArr.map((ele) => {
         let clickedStatus = ele.innerText
         let trimedClickedStatus = clickedStatus.replace(/\s{2,}/g, ' ').trim()
 
-         console.log("get call member")
+        console.log("get call member")
 
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
@@ -325,6 +325,61 @@ statusArr.map((ele) => {
         })
     })
 })
+
+
+//member filter
+const onClickMember = (btn) => {
+    document.querySelector(btn).addEventListener("click", () => {
+        const filterBtnSelector = document.querySelector(btn)
+        const clickedmember = filterBtnSelector.innerText
+        let trimedMember = clickedmember.replace(/\s+/g, '')
+        let memberNameSP = ""
+        let memberNameP = ""
+
+        if (trimedMember == "Ella") {
+            memberNameSP = "‍Ella‍"
+            memberNameP = "Ella‍"
+        } else if (trimedMember == "Eric") {
+            memberNameSP = "‍Eric‍"
+            memberNameP = "Eric‍"
+        } else if (trimedMember == "Joe") {
+            memberNameSP = "‍Joe‍"
+            memberNameP = "Joe‍"
+        } else if (trimedMember == "Linda") {
+            memberNameSP = "‍Linda‍"
+            memberNameP = "Linda‍"
+        } else if (trimedMember == "Oliver") {
+            memberNameSP = "‍Oliver‍"
+            memberNameP = "Oliver‍"
+        } else if (trimedMember == "Sophia") {
+            memberNameSP = "‍Sophia‍"
+            memberNameP = "Sophia‍"
+        } else if (trimedMember == "You") {
+            memberNameSP = "‍You‍"
+            memberNameP = "You‍"
+        }
+
+        allTransactionDataArr.map((ele, i) => {
+            if (i !== 0) {
+                let txMemberRowText = ele.querySelector(".transaction-member").innerText;
+                let trimedTxMemberRowText = txMemberRowText.replace(/\s+/g, '')
+
+                if (trimedTxMemberRowText == memberNameSP || trimedTxMemberRowText == memberNameP || trimedTxMemberRowText == trimedMember) {
+                    ele.style.display = "flex"
+                } else {
+                    ele.style.display = "none"
+                }
+            }
+        })
+    })
+}
+onClickMember(".ellaaccountfilter")
+onClickMember(".ericaccountfilter")
+onClickMember(".joeaccountfilter")
+onClickMember(".lindaaccountfilter")
+onClickMember(".oliveraccountfilter")
+onClickMember(".shophiaaccountfilter")
+onClickMember(".youaccountfilter")
 
 
 
