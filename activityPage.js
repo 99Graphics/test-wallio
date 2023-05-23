@@ -239,6 +239,9 @@ userMembersArr.map((ele) => {
                 let txMemberRowText = ele.querySelector(".transaction-member").innerText;
                 let trimedTxMemberRowText = txMemberRowText.replace(/\s{2,}/g, ' ').trim()
 
+                console.log("**" + trimedTxMemberRowText + "**")
+                console.log("**" + trimedMember + "**")
+
                 if (trimedTxMemberRowText == trimedMember) {
                     ele.style.display = "flex"
                 } else {
@@ -323,16 +326,16 @@ let statusArr = [...statusSelectorsArr]
 statusArr.map((ele) => {
     ele.addEventListener("click", () => {
         let clickedStatus = ele.innerText
-        let trimedClickedStatus = clickedStatus.replace(/\s{2,}/g, ' ').trim() 
+        let trimedClickedStatus = clickedStatus.replace(/\s{2,}/g, ' ').trim()
 
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
                 let txStatusRowText = ele.querySelector(".my-status-class").innerText;
-                let trimedTxStatusRowText = txStatusRowText.replace(/\s{2,}/g, ' ').trim() 
+                let trimedTxStatusRowText = txStatusRowText.replace(/\s{2,}/g, ' ').trim()
 
-                if(trimedTxStatusRowText == trimedClickedStatus){
+                if (trimedTxStatusRowText == trimedClickedStatus) {
                     ele.style.display = "flex"
-                }else{
+                } else {
                     ele.style.display = "none"
                 }
             }
