@@ -236,13 +236,13 @@ userMembersArr.map((ele) => {
 
         console.log("get call member")
 
-        console.log("**" + trimedTxMemberRowText + "**")
-        console.log("**" + trimedMember + "**")
-
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
                 let txMemberRowText = ele.querySelector(".transaction-member").innerText;
                 let trimedTxMemberRowText = txMemberRowText.replace(/\s{2,}/g, ' ').trim()
+
+                console.log("**" + trimedTxMemberRowText + "**")
+                console.log("**" + trimedMember + "**")
 
                 if (trimedTxMemberRowText == trimedMember) {
                     ele.style.display = "flex"
@@ -337,7 +337,7 @@ statusArr.map((ele) => {
         let clickedStatus = ele.innerText
         let trimedClickedStatus = clickedStatus.replace(/\s{2,}/g, ' ').trim()
 
-        console.log("get call status")
+         console.log("get call member")
 
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
