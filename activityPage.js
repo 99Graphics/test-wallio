@@ -256,7 +256,7 @@ const showDateInTheTable = () => {
             console.log(ele.style)
             let displayValue = ele.style.display;
 
-            console.log(displayValue + " = " + "none")
+            console.log(displayValue + " = " + "none123")
            
             if (currentDate != currentRunningDate && displayValue != "none") {
                 const dateContAbove = document.createElement("div");
