@@ -255,6 +255,8 @@ var currentRunningDate = null;
 
 
 const showDateInTheTable = () => {
+    console.log("get date show function")
+
     let allTransactionRowDataLoc = document.querySelectorAll(".transaction-history-row")
     let allTransactionDataArrLoc = [...allTransactionRowDataLoc]
 
