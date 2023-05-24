@@ -254,44 +254,47 @@ const showDateInTheTable = () => {
             let displayValue = ele.style.display.replace(/\s{2,}/g, ' ').trim()
             displayValue = `/${displayValue}/`;
 
-            console.log(displayValue + " = " + "/none/")
-           
-            if (currentDate != currentRunningDate && displayValue != "/none/") {
-                const dateContAbove = document.createElement("div");
-                const monthNames = ["January", "February", "March", "April", "May",
-                    "June", "July", "August", "September", "October", "November", "December"];
+            console.log(displayValue + " = " + "/nonetyt/")
+            if (displayValue == "/none/") {
+                console.log("display none")
+            } else {
+                console.log("display flex")
+                if (currentDate != currentRunningDate) {
+                    const dateContAbove = document.createElement("div");
+                    const monthNames = ["January", "February", "March", "April", "May",
+                        "June", "July", "August", "September", "October", "November", "December"];
 
-                const date = new Date();
-                let day = date.getDate();
-                let month = monthNames[date.getMonth()];
-                let year = date.getFullYear();
-                let curDate = `${month} ${day}, ${year}`
+                    const date = new Date();
+                    let day = date.getDate();
+                    let month = monthNames[date.getMonth()];
+                    let year = date.getFullYear();
+                    let curDate = `${month} ${day}, ${year}`
 
-                let previous = new Date(date.getTime());
-                previous.setDate(date.getDate() - 1)
+                    let previous = new Date(date.getTime());
+                    previous.setDate(date.getDate() - 1)
 
-                let dayPre = previous.getDate();
-                let monthPre = monthNames[previous.getMonth()];
-                let yearPre = previous.getFullYear();
-                let preDate = `${monthPre} ${dayPre}, ${yearPre}`
+                    let dayPre = previous.getDate();
+                    let monthPre = monthNames[previous.getMonth()];
+                    let yearPre = previous.getFullYear();
+                    let preDate = `${monthPre} ${dayPre}, ${yearPre}`
 
-                if (curDate == currentDate) {
-                    dateContAbove.innerText = `Today, ${currentDateMonth}`;
-                } else if (preDate == currentDate) {
-                    dateContAbove.innerText = `Yesterday, ${currentDateMonth}`;
-                } else {
-                    dateContAbove.innerText = currentDateMonth;
+                    if (curDate == currentDate) {
+                        dateContAbove.innerText = `Today, ${currentDateMonth}`;
+                    } else if (preDate == currentDate) {
+                        dateContAbove.innerText = `Yesterday, ${currentDateMonth}`;
+                    } else {
+                        dateContAbove.innerText = currentDateMonth;
+                    }
+
+                    dateContAbove.style.width = "100%";
+                    dateContAbove.style.textAlign = "center";
+                    dateContAbove.style.color = "gray";
+                    dateContAbove.style.margin = "7px 0px";
+                    dateContAbove.style.fontSize = "14px";
+                    ele.parentNode.insertBefore(dateContAbove, ele);
+                    currentRunningDate = currentDate
                 }
-
-                dateContAbove.style.width = "100%";
-                dateContAbove.style.textAlign = "center";
-                dateContAbove.style.color = "gray";
-                dateContAbove.style.margin = "7px 0px";
-                dateContAbove.style.fontSize = "14px";
-                ele.parentNode.insertBefore(dateContAbove, ele);
-                currentRunningDate = currentDate
             }
-
         }
     })
 }
