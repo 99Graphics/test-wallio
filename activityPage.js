@@ -243,9 +243,18 @@ var currentRunningDate = null;
 
 const showDateInTheTable = () => {
     console.log("get date show function3")
-
     let allTransactionRowDataLoc = document.querySelectorAll(".transaction-history-row")
     let allTransactionDataArrLoc = [...allTransactionRowDataLoc]
+
+    let allDateRowDiv = document.querySelectorAll(".date-cont-div")
+    let allDateRowDivArrLoc = [...allDateRowDiv]
+
+    console.log(allDateRowDivArrLoc)
+
+    allDateRowDivArrLoc.map((ele, i) => {
+        ele.style.display = "none"
+    })
+
 
     allTransactionDataArrLoc.map((ele, i) => {
         if (i !== 0) {
@@ -291,6 +300,7 @@ const showDateInTheTable = () => {
                     dateContAbove.style.color = "gray";
                     dateContAbove.style.margin = "7px 0px";
                     dateContAbove.style.fontSize = "14px";
+                    dateContAbove.classList.add("date-cont-div")
                     ele.parentNode.insertBefore(dateContAbove, ele);
                     currentRunningDate = currentDate
                 }
