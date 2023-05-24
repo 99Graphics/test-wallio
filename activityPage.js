@@ -242,19 +242,14 @@ var currentRunningDate = null;
 
 
 const showDateInTheTable = () => {
-    console.log("get date show function3")
     let allTransactionRowDataLoc = document.querySelectorAll(".transaction-history-row")
     let allTransactionDataArrLoc = [...allTransactionRowDataLoc]
-
     let allDateRowDiv = document.querySelectorAll(".date-cont-div")
     let allDateRowDivArrLoc = [...allDateRowDiv]
-
-    console.log(allDateRowDivArrLoc)
 
     allDateRowDivArrLoc.map((ele, i) => {
         ele.style.display = "none"
     })
-
 
     allTransactionDataArrLoc.map((ele, i) => {
         if (i !== 0) {
@@ -263,11 +258,9 @@ const showDateInTheTable = () => {
             let displayValue = ele.style.display.replace(/\s{2,}/g, ' ').trim()
             displayValue = `/${displayValue}/`;
 
-            console.log(displayValue + " = " + "/nonetyt/")
             if (displayValue == "/none/") {
                 console.log("display none")
             } else {
-                console.log("display flex")
                 if (currentDate != currentRunningDate) {
                     const dateContAbove = document.createElement("div");
                     const monthNames = ["January", "February", "March", "April", "May",
@@ -305,6 +298,10 @@ const showDateInTheTable = () => {
                     currentRunningDate = currentDate
                 }
             }
+        }
+
+        if (i === allTransactionDataArrLoc - 1) {
+            currentRunningDate = null;
         }
     })
 }
