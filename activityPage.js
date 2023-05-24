@@ -233,19 +233,6 @@ document.querySelector(".filterbtnshowhide").addEventListener("click", () => {
     }
 })
 
-const hideFiltersFun = () => {
-    document.querySelector(".memberfiltercont").style.display = "none"
-    document.querySelector(".accountfiltercont").style.display = "none"
-    document.querySelector(".categoryfiltercont").style.display = "none"
-    document.querySelector(".txtypefiltercont").style.display = "none"
-    document.querySelector(".statusfiltercont").style.display = "none"
-    document.querySelector(".dateyearfiltercont").style.display = "none"
-    document.querySelector(".datemonthfiltercont").style.display = "none"
-    document.querySelector(".alltypefiltercont").style.display = "none"
-    document.querySelector(".filterbysearchcont").style.display = "none"
-    showDateInTheTable()
-}
-
 //it will give all transactions data 
 const allTransactionRowData = document.querySelectorAll(".transaction-history-row")
 const allTransactionDataArr = [...allTransactionRowData]
@@ -306,6 +293,19 @@ const showDateInTheTable = () => {
 }
 showDateInTheTable()
 
+
+const hideFiltersFun = () => {
+    document.querySelector(".memberfiltercont").style.display = "none"
+    document.querySelector(".accountfiltercont").style.display = "none"
+    document.querySelector(".categoryfiltercont").style.display = "none"
+    document.querySelector(".txtypefiltercont").style.display = "none"
+    document.querySelector(".statusfiltercont").style.display = "none"
+    document.querySelector(".dateyearfiltercont").style.display = "none"
+    document.querySelector(".datemonthfiltercont").style.display = "none"
+    document.querySelector(".alltypefiltercont").style.display = "none"
+    document.querySelector(".filterbysearchcont").style.display = "none"
+    showDateInTheTable()
+}
 
 
 const initializeGlobalCategoriesArr = () => {
