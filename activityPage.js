@@ -347,6 +347,51 @@ categoriesArr.map((ele) => {
     })
 })
 
+
+// filter for transaction type
+let txTypesSelectorsArr = document.querySelectorAll(".div-block-18")
+let txTypesArr = [...txTypesSelectorsArr]
+
+txTypesArr.map((ele) => {
+    ele.addEventListener("click", () => {
+        const imageELe = ele.querySelector("img")
+        const imageURL1 = imageELe.getAttribute("src")
+
+        let fileNameArr1 = imageURL1.split("_")
+        let fileName1 = "1";
+
+        if (fileNameArr1.length > 0) {
+            let LocfileName1 = fileNameArr1[fileNameArr1.length - 1];
+            let LocfileNameArrByBot1 = LocfileName1.split(".")
+            fileName1 = LocfileNameArrByBot1[LocfileNameArrByBot1.length - 2]
+        }
+
+        allTransactionDataArr.map((ele, i) => {
+            if (i !== 0) {
+                let txTransactionNameRowText = ele.querySelector(".transaction-tx-name img");
+                const imageURL2 = txTransactionNameRowText.getAttribute("src")
+
+                let fileNameArr2 = imageURL2.split("_")
+                let fileName2 = "2";
+
+                if (fileNameArr2.length > 0) {
+                    let LocfileName2 = fileNameArr2[fileNameArr2.length - 1];
+                    let LocfileNameArrByBot2 = LocfileName2.split(".")
+                    fileName2 = LocfileNameArrByBot2[LocfileNameArrByBot2.length - 2]
+                }
+
+                if (fileName1 == fileName2) {
+                    ele.style.display = "flex"
+                } else {
+                    ele.style.display = "none"
+                }
+            }
+        })
+
+        hideFiltersFun()
+    })
+})
+
 //handle status click
 let statusSelectorsArr = document.querySelectorAll(".statusfiltertext")
 let statusArr = [...statusSelectorsArr]
