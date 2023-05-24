@@ -326,6 +326,9 @@ let categoriesSelectorsArr = document.querySelectorAll(".div-block-16")
 let categoriesArr = [...categoriesSelectorsArr]
 categoriesArr.map((ele) => {
     ele.addEventListener("click", () => {
+
+        console.log("get call")
+
         let clickedCategory = ele.innerText
         let trimedClickedCategory = clickedCategory.replace(/\s{2,}/g, ' ').trim()
 
@@ -333,6 +336,8 @@ categoriesArr.map((ele) => {
             if (i !== 0) {
                 let txCategoryRowText = ele.querySelector(".transaction-emoji-category").innerText;
                 let trimedTxCategoryRowText = txCategoryRowText.replace(/\s{2,}/g, ' ').trim()
+
+
 
                 if (trimedTxCategoryRowText == trimedClickedCategory) {
                     ele.style.display = "flex"
