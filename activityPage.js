@@ -321,20 +321,21 @@ userAccountsArr.map((ele) => {
     })
 })
 
-//handle transaction types click
-let txTypesSelectorsArr = document.querySelectorAll(".div-block-18")
-let txTypesArr = [...txTypesSelectorsArr]
-txTypesArr.map((ele) => {
+//handle category click
+let categoriesSelectorsArr = document.querySelectorAll(".div-block-16")
+let categoriesArr = [...categoriesSelectorsArr]
+categoriesArr.map((ele) => {
     ele.addEventListener("click", () => {
-        let clickedTxType = ele.innerText
-        let trimedClickedTxType = clickedTxType.replace(/\s{2,}/g, ' ').trim()
+
+        let clickedCategory = ele.innerText
+        let trimedClickedCategory = clickedCategory.replace(/\s{2,}/g, ' ').trim()
 
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
-                let txTransactionNameRowText = ele.querySelector(".transaction-tx-name").innerText;
-                let trimedTxTransactionNameRowText = txTransactionNameRowText.replace(/\s{2,}/g, ' ').trim()
+                let txCategoryRowText = ele.querySelector(".transaction-emoji-category h4").innerText;
+                let trimedTxCategoryRowText = txCategoryRowText.replace(/\s{2,}/g, ' ').trim()
 
-                if (trimedTxTransactionNameRowText == trimedClickedTxType) {
+                if (trimedTxCategoryRowText == trimedClickedCategory) {
                     ele.style.display = "flex"
                 } else {
                     ele.style.display = "none"
