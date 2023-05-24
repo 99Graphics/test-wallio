@@ -256,6 +256,8 @@ const showDateInTheTable = () => {
             console.log(ele.style)
             let displayValue = ele.style.display + "";
 
+            console.log(displayValue + " = " + "none")
+
             if (currentDate != currentRunningDate && displayValue != "none") {
                 const dateContAbove = document.createElement("div");
                 const monthNames = ["January", "February", "March", "April", "May",
