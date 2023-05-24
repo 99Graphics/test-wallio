@@ -34,12 +34,13 @@ for (let i = 0; i < approvalBtns.length; i++) {
     });
 }
 
+
+
+
+//to add background-color and font-color in category cell in table row 
 const categoryClassesArr = document.querySelectorAll(".transaction-emoji-category h4")
 let categoryArr = [...categoryClassesArr]
-
-
 const addBGColorAndColorToCategory = () => {
-    console.log("call color change fun")
     categoryArr.map((ele, i) => {
         let categoryName = ele?.innerText
         switch (categoryName) {
@@ -161,29 +162,38 @@ const addBGColorAndColorToCategory = () => {
 addBGColorAndColorToCategory()
 
 
+
+
+//to add background-color and font-color in status cell in table row 
 const statusClassesArr = document.querySelectorAll(".my-status-class p")
 let stateArr = [...statusClassesArr]
-stateArr.map((ele) => {
-    let statusText = ele?.innerText
-    switch (statusText) {
-        case "Needs Review":
-            ele.style.backgroundColor = "rgba(201, 153, 32, 0.2)";
-            ele.style.color = "rgb(201, 153, 32)";
-            break;
-        case "Pending":
-            ele.style.backgroundColor = "rgba(221, 92, 4, 0.2)";
-            ele.style.color = "rgb(221, 92, 4)";
-            break;
-        case "Completed":
-            ele.style.backgroundColor = "rgba(61, 202, 177, 0.2)";
-            ele.style.color = "RGB(61, 202, 177)";
-            break;
-        case "Canceled":
-            ele.style.backgroundColor = "rgba(241, 87, 87, 0.2)";
-            ele.style.color = "rgb(241, 87, 87)";
-            break;
-    }
-})
+const toAddColorInStatusCell = () => {
+    stateArr.map((ele) => {
+        let statusText = ele?.innerText
+        switch (statusText) {
+            case "Needs Review":
+                ele.style.backgroundColor = "rgba(201, 153, 32, 0.2)";
+                ele.style.color = "rgb(201, 153, 32)";
+                break;
+            case "Pending":
+                ele.style.backgroundColor = "rgba(221, 92, 4, 0.2)";
+                ele.style.color = "rgb(221, 92, 4)";
+                break;
+            case "Completed":
+                ele.style.backgroundColor = "rgba(61, 202, 177, 0.2)";
+                ele.style.color = "RGB(61, 202, 177)";
+                break;
+            case "Canceled":
+                ele.style.backgroundColor = "rgba(241, 87, 87, 0.2)";
+                ele.style.color = "rgb(241, 87, 87)";
+                break;
+        }
+    })
+}
+toAddColorInStatusCell()
+
+
+//to handle filters show-hide
 const filterContShow = (btn, showcont, hidecont1, hidecont2, hidecont3, hidecont4, hidecont5, hidecont6, hidecont7) => {
     document.querySelector(btn).addEventListener("click", () => {
         document.querySelector(showcont).style.display = "block"
@@ -206,9 +216,7 @@ filterContShow(".datefilterbtn", ".dateyearfiltercont", ".memberfiltercont", ".a
 filterContShow(".contentfilterbtn", ".filterbysearchcont", ".dateyearfiltercont", ".memberfiltercont", ".accountfiltercont", ".categoryfiltercont", ".txtypefiltercont", ".statusfiltercont", ".datemonthfiltercont")
 
 
-
-
-
+//to handle filter button click
 document.querySelector(".filterbtnshowhide").addEventListener("click", () => {
     document.querySelector(".memberfiltercont").style.display = "none"
     document.querySelector(".accountfiltercont").style.display = "none"
@@ -224,6 +232,7 @@ document.querySelector(".filterbtnshowhide").addEventListener("click", () => {
     }
 })
 
+
 //it will give all transactions data 
 const allTransactionRowData = document.querySelectorAll(".transaction-history-row")
 const allTransactionDataArr = [...allTransactionRowData]
@@ -234,7 +243,7 @@ var currentFilterYear = null;
 var currentFilterMonth = null;
 
 
-//handle date filter
+//handle year click under date filter and to store the year value
 const yearfiltercont = (btn) => {
     document.querySelector(btn).addEventListener("click", () => {
         document.querySelector(".datemonthfiltercont").style.display = "block"
@@ -255,14 +264,12 @@ yearfiltercont(".year2022filter")
 yearfiltercont(".year2021filter")
 
 
-//handle month click
+//handle month click & to apply date filter 
 let getAllTheMonthsFromFilter = document.querySelectorAll(".text-block-9")
 let getAllTheMonthsFromFilterArrLoc = [...getAllTheMonthsFromFilter]
-
 getAllTheMonthsFromFilterArrLoc.map((ele) => {
     ele.addEventListener("click", () => {
         const clickedMonthStr = ele.innerText
-        console.log(ele.innerText)
 
         allTransactionDataArr.map((ele, i) => {
             if (i !== 0) {
@@ -282,7 +289,7 @@ getAllTheMonthsFromFilterArrLoc.map((ele) => {
     })
 })
 
-
+// to show date associated with transactions
 const showDateInTheTable = () => {
     let allTransactionRowDataLoc = document.querySelectorAll(".transaction-history-row")
     let allTransactionDataArrLoc = [...allTransactionRowDataLoc]
@@ -349,7 +356,7 @@ const showDateInTheTable = () => {
 }
 showDateInTheTable()
 
-
+//to hide all filters
 const hideFiltersFun = () => {
     document.querySelector(".memberfiltercont").style.display = "none"
     document.querySelector(".accountfiltercont").style.display = "none"
@@ -360,12 +367,11 @@ const hideFiltersFun = () => {
     document.querySelector(".datemonthfiltercont").style.display = "none"
     document.querySelector(".alltypefiltercont").style.display = "none"
     document.querySelector(".filterbysearchcont").style.display = "none"
-    console.log("get date show function1")
+    document.querySelector(".filterbysearchcont").style.display = "none"
     showDateInTheTable()
-    console.log("get date show function2")
 }
 
-
+//to initialize categories global array to update later
 const initializeGlobalCategoriesArr = () => {
     allTransactionDataArr.map((ele, i) => {
         if (i !== 0) {
@@ -377,9 +383,9 @@ const initializeGlobalCategoriesArr = () => {
 }
 initializeGlobalCategoriesArr()
 
+//to set updated categories in the table
 const setCategoryInTable = () => {
     allTransactionDataArr.map((ele, i) => {
-        console.log("to set category")
         if (i !== 0 && ele.querySelector(".categorytabledatacont h4") && globalCategoriesArr[i - 1]) {
             ele.querySelector(".categorytabledatacont h4").innerText = globalCategoriesArr[i - 1]
         }
@@ -388,7 +394,7 @@ const setCategoryInTable = () => {
 setCategoryInTable()
 
 
-//content search filter
+//handle content search filter 
 document.querySelector(".contentinputbox").addEventListener("change", (e) => {
     let inputValue = e.target.value
     const patt = new RegExp(inputValue, "i");
@@ -411,7 +417,16 @@ document.querySelector(".contentinputbox").addEventListener("change", (e) => {
     })
 });
 
-//handle account click
+
+// to hide search filter after submit
+document.querySelector(".filterbysearchcont").addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.querySelector(".w-form-done").style.display = "none"
+    hideFiltersFun()
+});
+
+
+//handle account filter click
 let accountsSelectorsArr = document.querySelectorAll(".div-block-14")
 let userAccountsArr = [...accountsSelectorsArr]
 userAccountsArr.map((ele) => {
@@ -435,7 +450,7 @@ userAccountsArr.map((ele) => {
     })
 })
 
-//handle category click
+//handle category filter click
 let categoriesSelectorsArr = document.querySelectorAll(".div-block-16")
 let categoriesArr = [...categoriesSelectorsArr]
 categoriesArr.map((ele) => {
@@ -462,10 +477,9 @@ categoriesArr.map((ele) => {
 })
 
 
-// filter for transaction type
+//handle transaction type filter
 let txTypesSelectorsArr = document.querySelectorAll(".div-block-18")
 let txTypesArr = [...txTypesSelectorsArr]
-
 txTypesArr.map((ele) => {
     ele.addEventListener("click", () => {
         const imageELe = ele.querySelector("img")
@@ -506,7 +520,7 @@ txTypesArr.map((ele) => {
     })
 })
 
-//handle status click
+//handle status filter
 let statusSelectorsArr = document.querySelectorAll(".statusfiltertext")
 let statusArr = [...statusSelectorsArr]
 statusArr.map((ele) => {
@@ -532,7 +546,7 @@ statusArr.map((ele) => {
 })
 
 
-//member filter
+//handle member filter
 const onClickMember = (btn) => {
     document.querySelector(btn).addEventListener("click", () => {
         const filterBtnSelector = document.querySelector(btn)
@@ -587,16 +601,8 @@ onClickMember(".oliveraccountfilter")
 onClickMember(".shophiaaccountfilter")
 onClickMember(".youaccountfilter")
 
-// to hide search filter after submit
-document.querySelector(".filterbysearchcont").addEventListener("submit", (e) => {
-    e.preventDefault();
-    document.querySelector(".w-form-done").style.display = "none"
-    hideFiltersFun()
-});
-
-// to hide update drop down
+//to hide update drop down (need to review)
 const hideEveryCategoryOption = () => {
-    console.log("hide option dialog")
     allTransactionDataArr.map((ele, i) => {
         if (i != 0) {
             ele.querySelector(".transaction-emoji-category .div-block-23").style.display = "none"
@@ -606,18 +612,18 @@ const hideEveryCategoryOption = () => {
 hideEveryCategoryOption()
 
 
-//handle update category
+//to show category update dialog
 allTransactionDataArr.map((ele, i) => {
     if (i != 0) {
         ele.querySelector(".transaction-emoji-category h4").addEventListener("click", () => {
             hideEveryCategoryOption()
-            console.log("get call to show update")
             ele.querySelector(".transaction-emoji-category .div-block-23").style.display = "block"
             currentIndex = i - 1;
         })
     }
 })
 
+//to handle category update in the table
 let categoriesSelectorsArrForUpdate = document.querySelectorAll(".category-change-category")
 let categoriesArrForUpdate = [...categoriesSelectorsArrForUpdate]
 categoriesArrForUpdate.map((ele) => {
@@ -625,23 +631,19 @@ categoriesArrForUpdate.map((ele) => {
         let clickedCategory = ele.innerText
         let trimedClickedCategory = clickedCategory.replace(/\s{2,}/g, ' ').trim()
 
-        console.log("get call category1")
         globalCategoriesArr[currentIndex] = trimedClickedCategory
-        console.log("get call category2")
         setCategoryInTable()
-        console.log("get call category3")
         addBGColorAndColorToCategory()
-        console.log("get call category4")
         let allCategoryOptionDialog = document.querySelectorAll(".div-block-23")
         let allCategoryOptionDialogArr = [...allCategoryOptionDialog]
         allCategoryOptionDialogArr.map((ele, i) => {
-            console.log(i)
             ele.style.display = "none"
         })
-        console.log("get call category5")
     })
 })
 
+
+//to reset all the filters
 document.querySelector(".resetbtn").addEventListener("click", () => {
     allTransactionDataArr.map((ele, i) => {
         if (i !== 0) {
@@ -652,9 +654,7 @@ document.querySelector(".resetbtn").addEventListener("click", () => {
 })
 
 
-
-
-
+//to handle account search input in account filter
 let allAccountsTitleFromFilter = document.querySelectorAll(".div-block-14")
 let allAccountsTitleFromFilterArrLoc = [...allAccountsTitleFromFilter]
 document.querySelector(".accountsearchinputfield").addEventListener("change", (e) => {
@@ -664,26 +664,19 @@ document.querySelector(".accountsearchinputfield").addEventListener("change", (e
     if (!inputValue || inputValue.length == 0) {
         allAccountsTitleFromFilterArrLoc.map((ele) => { ele.style.display = "block" })
     } else {
-
-        console.log(inputValue)
-
-        console.log(allAccountsTitleFromFilterArrLoc)
-
         allAccountsTitleFromFilterArrLoc.map((ele) => {
-            console.log(ele.innerText)
             if (patt.test(ele.innerText)) {
                 ele.style.display = "block"
             } else {
                 ele.style.display = "none"
             }
-
         })
     }
 })
 
 
 
-
+//to handle search input in category filter dialog
 let allCategoryTextFromFilter = document.querySelectorAll(".text-block-6")
 let allCategoryTextFromFilterArrLoc = [...allCategoryTextFromFilter]
 document.querySelector(".search-category-input-filter").addEventListener("change", (e) => {
@@ -693,13 +686,7 @@ document.querySelector(".search-category-input-filter").addEventListener("change
     if (!inputValue || inputValue.length == 0) {
         allCategoryTextFromFilterArrLoc.map((ele) => { ele.style.display = "block" })
     } else {
-
-        console.log(inputValue)
-
-        console.log(allCategoryTextFromFilterArrLoc)
-
         allCategoryTextFromFilterArrLoc.map((ele) => {
-            console.log(ele.innerText)
             if (patt.test(ele.innerText)) {
                 ele.style.display = "block"
             } else {
@@ -711,6 +698,7 @@ document.querySelector(".search-category-input-filter").addEventListener("change
 })
 
 
+//to handle serach input in category update dialog
 let allCategorySearchInputForUpdate = document.querySelectorAll(".category-search-input-for-update")
 let allCategorySearchInputForUpdateArrLoc = [...allCategorySearchInputForUpdate]
 allCategorySearchInputForUpdateArrLoc.map((ele1) => {
@@ -722,13 +710,7 @@ allCategorySearchInputForUpdateArrLoc.map((ele1) => {
         if (!inputValue || inputValue.length == 0) {
             allCategoryTextFromFilterArrLoc.map((ele) => { ele.style.display = "block" })
         } else {
-
-            console.log(inputValue)
-
-            console.log(allCategoryTextFromFilterArrLoc)
-
             allCategoryTextFromFilterArrLoc.map((ele) => {
-                console.log(ele.innerText)
                 if (patt.test(ele.innerText)) {
                     ele.style.display = "block"
                 } else {
