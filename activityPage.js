@@ -242,7 +242,7 @@ var currentRunningDate = null;
 
 
 const showDateInTheTable = () => {
-    console.log("get date show function")
+    console.log("get date show function3")
 
     let allTransactionRowDataLoc = document.querySelectorAll(".transaction-history-row")
     let allTransactionDataArrLoc = [...allTransactionRowDataLoc]
@@ -304,7 +304,9 @@ const hideFiltersFun = () => {
     document.querySelector(".datemonthfiltercont").style.display = "none"
     document.querySelector(".alltypefiltercont").style.display = "none"
     document.querySelector(".filterbysearchcont").style.display = "none"
+    console.log("get date show function1")
     showDateInTheTable()
+    console.log("get date show function2")
 }
 
 
