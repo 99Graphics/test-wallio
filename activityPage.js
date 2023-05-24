@@ -251,14 +251,12 @@ const showDateInTheTable = () => {
         if (i !== 0) {
             const currentDate = ele.querySelector(".datecont div").innerText
             let currentDateMonth = currentDate.substring(0, currentDate.length - 6);
+            let displayValue = ele.style.display.replace(/\s{2,}/g, ' ').trim()
+            displayValue = `/${displayValue}/`;
 
-            console.log(ele.style.display)
-            console.log(ele.style)
-            let displayValue = ele.style.display;
-
-            console.log(displayValue + " = " + "none123")
+            console.log(displayValue + " = " + "/none/")
            
-            if (currentDate != currentRunningDate && displayValue != "none") {
+            if (currentDate != currentRunningDate && displayValue != "/none/") {
                 const dateContAbove = document.createElement("div");
                 const monthNames = ["January", "February", "March", "April", "May",
                     "June", "July", "August", "September", "October", "November", "December"];
