@@ -252,6 +252,9 @@ const showDateInTheTable = () => {
             const currentDate = ele.querySelector(".datecont div").innerText
             let currentDateMonth = currentDate.substring(0, currentDate.length - 6);
 
+            console.log(ele.style.display)
+            console.log(ele.style)
+
             if (currentDate != currentRunningDate) {
                 const dateContAbove = document.createElement("div");
                 const monthNames = ["January", "February", "March", "April", "May",
