@@ -321,36 +321,6 @@ userAccountsArr.map((ele) => {
     })
 })
 
-//handle category click
-let categoriesSelectorsArr = document.querySelectorAll(".div-block-16")
-let categoriesArr = [...categoriesSelectorsArr]
-categoriesArr.map((ele) => {
-    ele.addEventListener("click", () => {
-
-        console.log("get call")
-
-        let clickedCategory = ele.innerText
-        let trimedClickedCategory = clickedCategory.replace(/\s{2,}/g, ' ').trim()
-
-        allTransactionDataArr.map((ele, i) => {
-            if (i !== 0) {
-                let txCategoryRowText = ele.querySelector(".transaction-emoji-category").innerText;
-                let trimedTxCategoryRowText = txCategoryRowText.replace(/\s{2,}/g, ' ').trim()
-
-
-
-                if (trimedTxCategoryRowText == trimedClickedCategory) {
-                    ele.style.display = "flex"
-                } else {
-                    ele.style.display = "none"
-                }
-            }
-        })
-
-        hideFiltersFun()
-    })
-})
-
 //handle transaction types click
 let txTypesSelectorsArr = document.querySelectorAll(".div-block-18")
 let txTypesArr = [...txTypesSelectorsArr]
