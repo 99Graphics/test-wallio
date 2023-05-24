@@ -256,18 +256,6 @@ yearfiltercont(".year2021filter")
 
 
 //handle month click
-let getAllTheMonthsFromFilter = document.querySelectorAll(".text-block-9")
-let getAllTheMonthsFromFilterArrLoc = [...getAllTheMonthsFromFilter]
-
-getAllTheMonthsFromFilterArrLoc.map((ele) => {
-    ele.addEventListener("click", () => {
-
-        console.log(ele.innerText)
-
-    })
-})
-
-
 
 
 const showDateInTheTable = () => {
