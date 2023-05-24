@@ -209,15 +209,6 @@ filterContShow(".contentfilterbtn", ".filterbysearchcont", ".dateyearfiltercont"
 
 
 
-
-const yearfiltercont = (btn) => {
-    document.querySelector(btn).addEventListener("click", () => {
-        document.querySelector(".datemonthfiltercont").style.display = "block"
-    })
-}
-yearfiltercont(".year2023filter")
-yearfiltercont(".year2022filter")
-yearfiltercont(".year2021filter")
 document.querySelector(".filterbtnshowhide").addEventListener("click", () => {
     document.querySelector(".memberfiltercont").style.display = "none"
     document.querySelector(".accountfiltercont").style.display = "none"
@@ -239,6 +230,44 @@ const allTransactionDataArr = [...allTransactionRowData]
 var globalCategoriesArr = []
 var currentIndex = null
 var currentRunningDate = null;
+var currentFilterYear = null;
+var currentFilterMonth = null;
+
+
+//handle date filter
+const yearfiltercont = (btn) => {
+    document.querySelector(btn).addEventListener("click", () => {
+        document.querySelector(".datemonthfiltercont").style.display = "block"
+
+        if (btn == ".year2023filter") {
+            currentFilterYear = 2023
+        } else if (btn == ".year2022filter") {
+            currentFilterYear = 2022
+        } else if (".year2021filter") {
+            currentFilterYear = 2021
+        } else {
+            currentFilterYear = null
+        }
+    })
+}
+yearfiltercont(".year2023filter")
+yearfiltercont(".year2022filter")
+yearfiltercont(".year2021filter")
+
+
+//handle month click
+let getAllTheMonthsFromFilter = document.querySelectorAll(".text-block-9")
+let getAllTheMonthsFromFilterArrLoc = [...getAllTheMonthsFromFilter]
+
+getAllTheMonthsFromFilterArrLoc.map((ele) => {
+    ele.addEventListener("click", () => {
+
+        console.log(ele.innerText)
+
+    })
+})
+
+
 
 
 const showDateInTheTable = () => {
