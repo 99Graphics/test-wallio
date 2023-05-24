@@ -243,6 +243,7 @@ const hideFiltersFun = () => {
     document.querySelector(".datemonthfiltercont").style.display = "none"
     document.querySelector(".alltypefiltercont").style.display = "none"
     document.querySelector(".filterbysearchcont").style.display = "none"
+    showDateInTheTable()
 }
 
 //it will give all transactions data 
@@ -250,6 +251,60 @@ const allTransactionRowData = document.querySelectorAll(".transaction-history-ro
 const allTransactionDataArr = [...allTransactionRowData]
 var globalCategoriesArr = []
 var currentIndex = null
+var currentRunningDate = null;
+
+
+const showDateInTheTable = () => {
+    let allTransactionRowDataLoc = document.querySelectorAll(".transaction-history-row")
+    let allTransactionDataArrLoc = [...allTransactionRowDataLoc]
+
+    allTransactionDataArrLoc.map((ele, i) => {
+        if (i !== 0) {
+            const currentDate = ele.querySelector(".datecont div").innerText
+            let currentDateMonth = currentDate.substring(0, currentDate.length - 6);
+
+            if (currentDate != currentRunningDate) {
+                const dateContAbove = document.createElement("div");
+                const monthNames = ["January", "February", "March", "April", "May",
+                    "June", "July", "August", "September", "October", "November", "December"];
+
+                const date = new Date();
+                let day = date.getDate();
+                let month = monthNames[date.getMonth()];
+                let year = date.getFullYear();
+                let curDate = `${month} ${day}, ${year}`
+
+                let previous = new Date(date.getTime());
+                previous.setDate(date.getDate() - 1)
+
+                let dayPre = previous.getDate();
+                let monthPre = monthNames[previous.getMonth()];
+                let yearPre = previous.getFullYear();
+                let preDate = `${monthPre} ${dayPre}, ${yearPre}`
+
+                if (curDate == currentDate) {
+                    dateContAbove.innerText = `Today, ${currentDateMonth}`;
+                } else if (preDate == currentDate) {
+                    dateContAbove.innerText = `Yesterday, ${currentDateMonth}`;
+                } else {
+                    dateContAbove.innerText = currentDateMonth;
+                }
+
+                dateContAbove.style.width = "100%";
+                dateContAbove.style.textAlign = "center";
+                dateContAbove.style.color = "gray";
+                dateContAbove.style.margin = "7px 0px";
+                dateContAbove.style.fontSize = "14px";
+                ele.parentNode.insertBefore(dateContAbove, ele);
+                currentRunningDate = currentDate
+            }
+
+        }
+    })
+}
+showDateInTheTable()
+
+
 
 const initializeGlobalCategoriesArr = () => {
     allTransactionDataArr.map((ele, i) => {
@@ -531,7 +586,7 @@ categoriesArrForUpdate.map((ele) => {
 document.querySelector(".resetbtn").addEventListener("click", () => {
     allTransactionDataArr.map((ele, i) => {
         if (i !== 0) {
-                ele.style.display = "flex"
+            ele.style.display = "flex"
         }
     })
     hideFiltersFun()
