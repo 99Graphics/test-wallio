@@ -528,7 +528,13 @@ categoriesArrForUpdate.map((ele) => {
     })
 })
 
-
+document.querySelector(".resetbtn").addEventListener("click", () => {
+    allTransactionDataArr.map((ele, i) => {
+        if (i !== 0) {
+                ele.style.display = "flex"
+        }
+    })
+})
 
 
 
