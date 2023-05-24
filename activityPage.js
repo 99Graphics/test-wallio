@@ -534,6 +534,7 @@ document.querySelector(".resetbtn").addEventListener("click", () => {
                 ele.style.display = "flex"
         }
     })
+    hideFiltersFun()
 })
 
 
