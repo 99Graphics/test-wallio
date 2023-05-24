@@ -256,6 +256,31 @@ yearfiltercont(".year2021filter")
 
 
 //handle month click
+let getAllTheMonthsFromFilter = document.querySelectorAll(".text-block-9")
+let getAllTheMonthsFromFilterArrLoc = [...getAllTheMonthsFromFilter]
+
+getAllTheMonthsFromFilterArrLoc.map((ele) => {
+    ele.addEventListener("click", () => {
+        const clickedMonthStr = ele.innerText
+        console.log(ele.innerText)
+
+        allTransactionDataArr.map((ele, i) => {
+            if (i !== 0) {
+                const currentDate = ele.querySelector(".datecont div").innerText
+                const datePartsArr = currentDate.split(" ")
+                const curMonthStr = datePartsArr[0]
+                const curYearStr = datePartsArr[2]
+
+                if (currentFilterYear == curYearStr && curMonthStr == clickedMonthStr) {
+                    ele.style.display = "flex"
+                } else {
+                    ele.style.display = "none"
+                }
+            }
+        })
+        hideFiltersFun()
+    })
+})
 
 
 const showDateInTheTable = () => {
@@ -366,12 +391,12 @@ setCategoryInTable()
 //content search filter
 document.querySelector(".contentinputbox").addEventListener("change", (e) => {
     let inputValue = e.target.value
+    const patt = new RegExp(inputValue, "i");
     allTransactionDataArr.map((ele, i) => {
         if (i !== 0) {
             if (inputValue) {
                 let txTransactionNameRowText = ele.querySelector(".transaction-tx-name").innerText;
                 let trimedTxTransactionNameRowText = txTransactionNameRowText.replace(/\s{2,}/g, ' ').trim()
-                const patt = new RegExp(inputValue, "i");
                 const res = patt.test(trimedTxTransactionNameRowText);
 
                 if (res) {
@@ -406,7 +431,6 @@ userAccountsArr.map((ele) => {
                 }
             }
         })
-
         hideFiltersFun()
     })
 })
@@ -626,6 +650,98 @@ document.querySelector(".resetbtn").addEventListener("click", () => {
     })
     hideFiltersFun()
 })
+
+
+
+
+
+let allAccountsTitleFromFilter = document.querySelectorAll(".div-block-14")
+let allAccountsTitleFromFilterArrLoc = [...allAccountsTitleFromFilter]
+document.querySelector(".accountsearchinputfield").addEventListener("change", (e) => {
+    const inputValue = e.target.value
+    const patt = new RegExp(inputValue, "i");
+
+    if (!inputValue || inputValue.length == 0) {
+        allAccountsTitleFromFilterArrLoc.map((ele) => { ele.style.display = "block" })
+    } else {
+
+        console.log(inputValue)
+
+        console.log(allAccountsTitleFromFilterArrLoc)
+
+        allAccountsTitleFromFilterArrLoc.map((ele) => {
+            console.log(ele.innerText)
+            if (patt.test(ele.innerText)) {
+                ele.style.display = "block"
+            } else {
+                ele.style.display = "none"
+            }
+
+        })
+    }
+})
+
+
+
+
+let allCategoryTextFromFilter = document.querySelectorAll(".text-block-6")
+let allCategoryTextFromFilterArrLoc = [...allCategoryTextFromFilter]
+document.querySelector(".search-category-input-filter").addEventListener("change", (e) => {
+    const inputValue = e.target.value
+    const patt = new RegExp(inputValue, "i");
+
+    if (!inputValue || inputValue.length == 0) {
+        allCategoryTextFromFilterArrLoc.map((ele) => { ele.style.display = "block" })
+    } else {
+
+        console.log(inputValue)
+
+        console.log(allCategoryTextFromFilterArrLoc)
+
+        allCategoryTextFromFilterArrLoc.map((ele) => {
+            console.log(ele.innerText)
+            if (patt.test(ele.innerText)) {
+                ele.style.display = "block"
+            } else {
+                ele.style.display = "none"
+            }
+
+        })
+    }
+})
+
+
+let allCategorySearchInputForUpdate = document.querySelectorAll(".category-search-input-for-update")
+let allCategorySearchInputForUpdateArrLoc = [...allCategorySearchInputForUpdate]
+allCategorySearchInputForUpdateArrLoc.map((ele1) => {
+    ele1.addEventListener("change", (e) => {
+
+        const inputValue = e.target.value
+        const patt = new RegExp(inputValue, "i");
+
+        if (!inputValue || inputValue.length == 0) {
+            allCategoryTextFromFilterArrLoc.map((ele) => { ele.style.display = "block" })
+        } else {
+
+            console.log(inputValue)
+
+            console.log(allCategoryTextFromFilterArrLoc)
+
+            allCategoryTextFromFilterArrLoc.map((ele) => {
+                console.log(ele.innerText)
+                if (patt.test(ele.innerText)) {
+                    ele.style.display = "block"
+                } else {
+                    ele.style.display = "none"
+                }
+
+            })
+        }
+
+    })
+})
+
+
 
 
 
